@@ -19,9 +19,15 @@
     return [[self alloc] initWithFoo:foo];
 }
 
++ (DBExtendedRecord * __nonnull)extendedRecordConst
+{
+    static DBExtendedRecord * const s_extendedRecordConst = [[DBExtendedRecord alloc] initWithFoo:YES];
+    return s_extendedRecordConst;
+}
+
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"<%@ %p foo:%@>", self.class, self, @(self.foo)];
+    return [NSString stringWithFormat:@"<%@ %p foo:%@>", self.class, (void *)self, @(self.foo)];
 }
 
 @end
