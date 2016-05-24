@@ -144,7 +144,7 @@ class ObjcGenerator(spec: Spec) extends BaseObjcGenerator(spec) {
     val self = marshal.typename(objcName, r)
 
     refs.header.add("#import <Foundation/Foundation.h>")
-    refs.body.add("!#import " + q((if (r.ext.objc) spec.objcExtendedRecordIncludePrefix else spec.objcIncludePrefix) + marshal.headerName(ident)))
+    refs.body.add("!#import " + q(spec.objcIncludePrefix + (if (r.ext.objc) spec.objcExtendedRecordIncludePrefix else "") + marshal.headerName(ident)))
 
     if (r.ext.objc) {
       refs.header.add(s"@class $noBaseSelf;")
@@ -397,7 +397,7 @@ class ObjcGenerator(spec: Spec) extends BaseObjcGenerator(spec) {
       //   w.wl("];")
       // }
       // w.wl
- 
+
       w.wl("@end")
     })
   }

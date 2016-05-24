@@ -158,6 +158,11 @@ class CppGenerator(spec: Spec) extends Generator(spec) {
       }
       writeDoc(w, doc)
       writeCppTypeParams(w, params)
+      if (r.ext.cpp) {
+        w.w(s"struct $self; // Requiring extended class")
+        w.wl
+        w.wl
+      }
       w.w("struct " + actualSelf + cppFinal).bracedSemi {
         generateHppConstants(w, r.consts)
         // Field definitions.
