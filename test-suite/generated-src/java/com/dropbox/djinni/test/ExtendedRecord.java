@@ -7,7 +7,7 @@ import javax.annotation.CheckForNull;
 import javax.annotation.Nonnull;
 
 /** Extended record */
-public final class ExtendedRecord {
+public class ExtendedRecord {
 
 
     /*package*/ final boolean mFoo;
